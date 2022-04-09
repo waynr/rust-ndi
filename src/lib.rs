@@ -11,9 +11,11 @@ pub mod receive;
 pub mod send;
 mod util;
 
+pub use send::SendCreateError;
+
 pub use crate::instance::load;
 use crate::receive::{ReceiveBandwidth, ReceiveColorFormat, ReceiveCreateError, ReceiveInstance};
-use crate::send::{SendCreateError, SendInstance};
+pub use crate::send::SendInstance;
 
 /// A loaded SDK Instance
 pub struct NDIInstance {

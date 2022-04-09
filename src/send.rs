@@ -2,6 +2,7 @@ use crate::{sdk, NDIHandle};
 use std::ffi::CString;
 use std::ptr::{null, null_mut};
 use std::sync::Arc;
+use thiserror::Error;
 
 unsafe impl Send for SendInstance {}
 pub struct SendInstance {
@@ -145,9 +146,11 @@ pub struct NDISendVideoFrame {
     data: Vec<u8>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Error)]
 pub enum SendCreateError {
+    #[error("invalid SDI sender name")]
     InvalidName,
+    #[error("SDI sender creation failed")]
     Failed,
 }
 
